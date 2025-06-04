@@ -283,6 +283,26 @@ Create a handoff configuration object with the following structure:
    - Convert the object to a JSON string
    - Enter it in the **Live agent handoff configuration** field in chat app settings
 
+3. Pass Custom Tags and Fields During Live Agent Handoff (Optional)  
+   * To override default ticket values (such as tags or requester info) when handing off to a Zendesk live agent, you can use the customFieldValues object in your handoff configuration.  
+   * This allows you to pass custom tags, requester data, or any supported Zendesk ticket property directly into the created ticket during handoff.  
+   * For more information on supported metadata and custom fields, refer to [Zendesk’s Switchboard documentation](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/switchboard/#metadata).
+
+```javascript
+{  
+  type: 'zendesk',  
+  subdomain: 'your-zendesk-subdomain',  
+  apiKey: 'int\_your\_integration\_api\_key',  
+  apiSecret: 'your\_integration\_api\_secret',  
+  appId: 'your\_zendesk\_app\_id',  
+  webhookId: 'your-webhook-id',  
+   "customFieldValues": {  
+        "dataCapture.systemField.requester.name": "Test User",  
+        "dataCapture.systemField.tags": \["maven\_chat", "maven"\]  
+     }  
+  ```
+
+
 ##### Configuration Options
 
 | Option | Type | Required | Default | Description |
